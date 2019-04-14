@@ -1,6 +1,6 @@
 <template>
   <div >
-
+    <a href="/#/detailed"><h1>Detailed</h1></a><br>
   <app-pagination 
   :current="currentPage" 
   :total="totalPosts" 
@@ -10,7 +10,6 @@
   </app-pagination>
 
     <header class="grid_item" >
-      <br>
       <h1>Blog</h1>
       <input type="text" v-model="postTitle" placeholder="TITLE" size="60"><p></p>
       <input type="text" v-model="postBody" placeholder="POST BODY" size="60"><br><p></p>
@@ -21,10 +20,13 @@
   <div class="my-flex-container">
 
   <div v-for="(post, index) in posts" v-bind:key='post.id' class="flex-block">
+    <router-link :to="{ name: 'detail', params: {id: post.id, title: post.title, body: post.body} }">
     <img src="src/img/post.jpg"/>
+    </router-link>
     <h4>Post # {{ post.id }}</h4>
     <h3>{{ post.title }}</h3>
     <p>{{ post.body}}</p>
+    
 
     <div class="wrapper">  
       <div class="content">

@@ -1,7 +1,12 @@
 <template>
     <div>
-        <h2>asdasd</h2>
-    <!-- <img src="src/img/post.jpg"/>
+        <h1 style="color:#ff0000">Detailed</h1>
+        <a href="/#/"><h1 style="color:#ff0000">Home</h1></a>
+
+    <div class="my-flex-container">
+
+  <div class="flex-block">
+    <img src="src/img/post.jpg"/>
     <h4>Post # {{ post.id }}</h4>
     <h3>{{ post.title }}</h3>
     <p>{{ post.body}}</p>
@@ -16,17 +21,22 @@
         </ul>  
       </div>
       <div class="parent">Edit</div>
-    </div> -->
+    </div>
+
+  </div>
+  
+  </div>
 
       <hr>
   </div>
 </template>
 
 <script>
+import axios from 'axios';
 export default {
     data () {
     return {
-      posts: [],
+      post: '',
       postTitle: '',
       postBody: '',
       newPostTitle: '',
@@ -35,16 +45,20 @@ export default {
     }
   },
     props: {
-      id: Number,
+      id: {
+        type: Number,
+        default: 2,
+      }
     },
     created() {
-    this.getAllPosts(id);
+    this.getAllPosts(this.id);
   },
     methods: {
     getAllPosts(id) {
       axios.get(this.url + id)
         .then(response => {
-          this.posts = response.data
+          this.post = response.data
+          // console.log(response)
         })
         .catch(error => {
           console.log('-----error-------');
@@ -60,9 +74,9 @@ export default {
     editPost(id, title, body) {
           axios.put('http://jsonplaceholder.typicode.com/posts/' + id, { title: title,  body: body, } )
           .then((response) => {})
-          /* .catch(function(error) {
+          .catch(function(error) {
             console.log(error)
-          }) */
+          })
     },
   }
 }
