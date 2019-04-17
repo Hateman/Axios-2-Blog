@@ -1,6 +1,17 @@
 <template>
   <div >
-    <a href="/#/detailed"><h1>Detailed</h1></a><br>
+    <!-- <router-link :to="{ name: 'detailed', params: { id: 0 } }">
+    <h1>Detailed</h1>
+    </router-link>
+    <router-link :to="{ name: 'latest'}">
+    <h1>Latest</h1>
+    </router-link>
+    <br> -->
+
+    <app-header
+    @post-title="getSearchingPosts">
+    </app-header>
+
   <app-pagination 
   :current="currentPage" 
   :total="totalPosts" 
@@ -13,33 +24,25 @@
       <h1>Blog</h1>
       <input type="text" v-model="postTitle" placeholder="TITLE" size="60"><p></p>
       <input type="text" v-model="postBody" placeholder="POST BODY" size="60"><br><p></p>
-      <button v-on:click="newPost()" class="btn btn-success">Add new post</button><p></p>
+      <button v-on:click="newPost()" class="btn btn-success">Add new post</button>
       <hr>
     </header>
 
   <div class="my-flex-container">
 
-  <div v-for="(post, index) in posts" v-bind:key='post.id' class="flex-block">
-    <router-link :to="{ name: 'detail', params: {id: post.id, title: post.title, body: post.body} }">
+  <div v-for="post in posts" :key='post.id' class="flex-block">
+    <router-link :to="{ name: 'detailed', params: { id: post.id -1 } }">
     <img src="src/img/post.jpg"/>
     </router-link>
-    <h4>Post # {{ post.id }}</h4>
-    <h3>{{ post.title }}</h3>
-    <p>{{ post.body}}</p>
+    <h4><span style="color:#98FB98">Post #</span> {{ post.id }}</h4>
+    <h3><span style="color:#98FB98">Title:</span> {{ post.title }}</h3>
+    <p><span style="color:#98FB98">Body:</span> <br>{{ post.body}}</p>
     
-
-    <div class="wrapper">  
-      <div class="content">
-        <ul>    
-          <li><input type="text" v-model="post.title" placeholder="EDIT TITLE" size="30"></li>
-          <li><input type="text" v-model="post.body" placeholder="EDIT POST" size="30"></li><br>
-          <li><button v-on:click="editPost(post.id, post.title, post.body)" class="btn btn-info">Confirm</button>
-          <button v-on:click="deletePost(index)" class="btn btn-primary">Delete</button></li>
-        </ul>  
-      </div>
-      <div class="parent">Edit</div>
+    <div class="wrapper">
+          <router-link :to="{ name: 'detailed', params: { id: post.id - 1} }">
+            <button class="btn btn-success">Detailed</button>
+          </router-link>  
     </div>
-
       <hr>
   </div>
   
@@ -51,9 +54,11 @@
 <script>
 import axios from 'axios';
 import Pagination from './Pagination.vue';
+import Header from './Header.vue';
 export default {
    components: {
     'app-pagination': Pagination,
+    'app-header': Header,
   },
    data () {
     return {
@@ -75,7 +80,33 @@ export default {
     this.getAllPosts(this.currentPage);
   },
   
+/*   computed: {
+    filteredPosts: function(sTitle){
+      return this.posts.filter(function (sTitle) {
+                 
+      if(sTitle==='') return true;
+      else return elem.company.indexOf(sTitle) > -1;
+      })
+    }
+  }, */
+
   methods: {
+    getSearchingPosts(idPost) {
+      var options = {
+        params: {
+          id: idPost,
+        }
+      }
+      axios.get(this.url, options)
+        .then(response => {
+          this.posts = response.data
+          this.currentPage = page
+        })
+        .catch(error => {
+          console.log('-----error-------');
+          console.log(error);
+        })
+    },
     getAllPosts(page) {
         this.idEnd = page*4;
         this.idStart = this.idEnd-4;
@@ -94,10 +125,6 @@ export default {
           console.log('-----error-------');
           console.log(error);
         })
-
-        this.idStart = this.idEnd;
-        this.idEnd = this.idEnd + 5;
-
     },
     newPost() {
       axios.post('http://jsonplaceholder.typicode.com/posts/', {

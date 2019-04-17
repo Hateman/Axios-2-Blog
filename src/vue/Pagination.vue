@@ -7,7 +7,7 @@
         <ul>
           <li v-if="hasFirst()"><a href="#" @click="changePage(1)">1</a></li>
           <li v-if="hasFirst()"> 
-            <span class="jump"><<</span> 
+            <span class="jump" style="color:#eee"><<</span> 
           </li>
           <li v-for="page in pages" v-bind:key='page'>
             <a href="#" @click="changePage(page)" :class="{ current: current == page }">
@@ -15,7 +15,7 @@
             </a>
           </li>
           <li v-if="hasLast()"> 
-              <span class="jump">>></span>  
+              <span class="jump" style="color:#eee">>></span>  
           </li>
           <li v-if="hasLast()"><a href="#" @click="changePage(totalPages)">{{ totalPages }}</a></li>
         </ul>

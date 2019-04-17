@@ -1,16 +1,15 @@
 <template>
     <div>
-        <h1 style="color:#ff0000">Detailed</h1>
-        <a href="/#/"><h1 style="color:#ff0000">Home</h1></a>
-
+        <app-header
+        >
+        </app-header>
     <div class="my-flex-container">
-
+  <!-- ================================================================================================================================== -->
   <div class="flex-block">
     <img src="src/img/post.jpg"/>
     <h4>Post # {{ post.id }}</h4>
     <h3>{{ post.title }}</h3>
     <p>{{ post.body}}</p>
-
     <div class="wrapper">  
       <div class="content">
         <ul>    
@@ -22,9 +21,16 @@
       </div>
       <div class="parent">Edit</div>
     </div>
-
   </div>
+  <!-- ================================================================================================================================== -->
+  <!-- <div class="flex-block-latest"> -->
+
+  <app-latest
+  @post-id="getDetailedPost">
+  </app-latest>
   
+  <!-- </div> -->
+  <!-- ================================================================================================================================== -->
   </div>
 
       <hr>
@@ -33,7 +39,13 @@
 
 <script>
 import axios from 'axios';
+import Latest from './Latest.vue';
+import Header from './Header.vue';
 export default {
+  components: {
+    'app-latest': Latest,
+    'app-header': Header,
+  },
     data () {
     return {
       post: '',
@@ -44,21 +56,21 @@ export default {
       url: 'https://jsonplaceholder.typicode.com/posts/',
     }
   },
-    props: {
-      id: {
-        type: Number,
-        default: 2,
-      }
-    },
+    // props: {
+    //   id: {
+    //     type: Number,
+    //     default: 2,
+    //   }
+    // },
     created() {
-    this.getAllPosts(this.id);
+    this.getDetailedPost( this.$route.params.id + 1 );
   },
     methods: {
-    getAllPosts(id) {
+    getDetailedPost(id) {
       axios.get(this.url + id)
         .then(response => {
           this.post = response.data
-          // console.log(response)
+          // console.log(response.data)
         })
         .catch(error => {
           console.log('-----error-------');
