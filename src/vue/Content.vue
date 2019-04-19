@@ -56,7 +56,10 @@ import axios from 'axios';
 import Pagination from './Pagination.vue';
 import Header from './Header.vue';
 export default {
-   
+   components: {
+    'app-pagination': Pagination,
+    'app-header': Header,
+  },
    data () {
     return {
       posts: [],
@@ -73,12 +76,6 @@ export default {
       idEnd: 5,
     }
   },
-
-  components: {
-    'app-pagination': Pagination,
-    'app-header': Header,
-  },
-  
   created() {
     this.getAllPosts(this.currentPage);
   },
