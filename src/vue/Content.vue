@@ -1,13 +1,5 @@
 <template>
   <div >
-    <!-- <router-link :to="{ name: 'detailed', params: { id: 0 } }">
-    <h1>Detailed</h1>
-    </router-link>
-    <router-link :to="{ name: 'latest'}">
-    <h1>Latest</h1>
-    </router-link>
-    <br> -->
-
     <app-header
     @post-title="getSearchingPosts">
     </app-header>
@@ -79,17 +71,6 @@ export default {
   created() {
     this.getAllPosts(this.currentPage);
   },
-  
-/*   computed: {
-    filteredPosts: function(sTitle){
-      return this.posts.filter(function (sTitle) {
-                 
-      if(sTitle==='') return true;
-      else return elem.company.indexOf(sTitle) > -1;
-      })
-    }
-  }, */
-
   methods: {
     getSearchingPosts(idPost) {
       var options = {
@@ -139,9 +120,10 @@ export default {
     editPost(id, title, body) {
           axios.put('http://jsonplaceholder.typicode.com/posts/' + id, { title: title,  body: body, } )
           .then((response) => {})
-          /* .catch(function(error) {
-            console.log(error)
-          }) */
+          .catch(error => {
+          console.log('-----error-------');
+          console.log(error);
+          })
     },
   }
 }
