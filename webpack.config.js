@@ -1,6 +1,5 @@
-var path = require('path');
-var webpack = require('webpack');
-var UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+var path = require('path')
+var webpack = require('webpack')
 
 module.exports = {
   entry: './src/main.js',
@@ -66,10 +65,9 @@ if (process.env.NODE_ENV === 'production') {
         NODE_ENV: '"production"'
       }
     }),
-    // new UglifyJSPlugin({
-     new webpack.optimize.UglifyJsPlugin({
+    new webpack.optimize.UglifyJsPlugin({
       sourceMap: true,
-       compress: {
+      compress: {
         warnings: false
       }
     }),
