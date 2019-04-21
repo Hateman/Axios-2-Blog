@@ -59,7 +59,7 @@ export default {
       postBody: '',
       newPostTitle: '',
       newPostBody: '',
-      // url: 'https://jsonplaceholder.typicode.com/posts/',
+      url: 'https://jsonplaceholder.typicode.com/posts/',
       perPage: 4,
       currentPage: 1,
       totalPosts: 100,
