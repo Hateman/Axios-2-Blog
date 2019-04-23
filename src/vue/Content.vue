@@ -32,7 +32,7 @@
 
   <div v-for="post in posts" :key='post.id' class="flex-block">
     <router-link :to="{ name: 'detailed', params: { id: post.id -1 } }">
-    <img src="src/img/post.jpg"/>
+    <img src="../img/post.jpg"/>
     </router-link>
     <h4><span style="color:#98FB98">Post #</span> {{ post.id }}</h4>
     <h3><span style="color:#98FB98">Title:</span> {{ post.title }}</h3>

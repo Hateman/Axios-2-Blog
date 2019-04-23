@@ -12,7 +12,7 @@
 
   <tr v-for="post in posts" :key='post.id' class="flex-block-latest">
     <router-link :to="{ name: 'detailed', params: { id: post.id -1 } }">
-    <img src="src/img/post.jpg" @click="getPostId(post.id)" width="350px" height="218px"/>
+    <img src="../img/post.jpg" @click="getPostId(post.id)" width="350px" height="218px"/>
     </router-link>
     <h4>Post # {{ post.id }}</h4>
     <h3>{{ post.title }}</h3>

@@ -6,7 +6,7 @@
     <div class="my-flex-container">
   <!-- ================================================================================================================================== -->
   <div class="flex-block">
-    <img src="src/img/post.jpg"/>
+    <img src="../img/post.jpg"/>
     <h4>Post # {{ post.id }}</h4>
     <h3>{{ post.title }}</h3>
     <p>{{ post.body}}</p>
