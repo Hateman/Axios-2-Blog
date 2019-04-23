@@ -4,6 +4,7 @@ import VueRouter from 'vue-router'
 import App from './vue/App.vue'
 import Content from './vue/Content.vue'
 import Detailed from './vue/Detailed.vue'
+import Latest from './vue/Latest.vue'
 
 
 // var Vue = require ('vue')
@@ -18,8 +19,9 @@ Vue.use(VueRouter)
 
 var router = new VueRouter ({
     routes: [
-        { path: '/detailed', component: Detailed },
-        { path: '/', component: Content },
+        { path: '/detailed/id', name: 'detailed', component: Detailed },
+        { path: '/latest', name: 'latest', component: Latest },
+        { path: '/', name: 'content', component: Content },
     ]
 })
 
