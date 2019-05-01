@@ -8,9 +8,9 @@
     </router-link>
     <br> -->
 
-    <app-header
+    <!-- <app-header
     @post-title="getSearchingPosts">
-    </app-header>
+    </app-header> -->
 
   <app-pagination 
   :current="currentPage" 
@@ -80,15 +80,11 @@ export default {
     this.getAllPosts(this.currentPage);
   },
   
-/*   computed: {
-    filteredPosts: function(sTitle){
-      return this.posts.filter(function (sTitle) {
-                 
-      if(sTitle==='') return true;
-      else return elem.company.indexOf(sTitle) > -1;
-      })
+  computed: {
+    searchResults() {
+      return this.$store.results
     }
-  }, */
+  },
 
   methods: {
     getSearchingPosts(idPost) {
