@@ -7,8 +7,8 @@
         </router-link>
         <div class="block-header"><a href="#">About</a></div>
         <div class="block-header">
-            <input type="text" v-model="postTitle" placeholder="search by ID" size="10" style="height:30px; font-size: 20px;">
-            <button class="search-button" @click="search(postTitle)">
+            <input type="text" v-model="searchId" placeholder="search by ID" size="10" style="height:30px; font-size: 20px;">
+            <button class="search-button" @click="searching()">
                 GO
             </button>
         </div>
@@ -19,12 +19,12 @@
 export default {
     data () {
     return {
-      postTitle: '',
+      searchId: '',
     }
   },
   methods: {
-    search (title) {
-      this.$emit('post-title', title)
+    searching () {
+      this.$store.dispatch('searching', this.searchId)
     }
   },
 }

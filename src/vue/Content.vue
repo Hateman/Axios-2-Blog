@@ -1,24 +1,19 @@
 <template>
   <div >
-    <!-- <router-link :to="{ name: 'detailed', params: { id: 0 } }">
-    <h1>Detailed</h1>
-    </router-link>
-    <router-link :to="{ name: 'latest'}">
-    <h1>Latest</h1>
-    </router-link>
-    <br> -->
 
     <!-- <app-header
     @post-title="getSearchingPosts">
     </app-header> -->
 
-  <app-pagination 
+  <!-- <app-pagination 
   :current="currentPage" 
   :total="totalPosts" 
   :perPage="perPage" 
   :pageRange="pageRange"  
-  @page-changed="getAllPosts">
-  </app-pagination>
+  >
+  </app-pagination> -->
+
+  <app-pagination></app-pagination>
 
     <header class="grid_item" >
       <h1>Blog</h1>
@@ -62,66 +57,22 @@ export default {
   },
    data () {
     return {
-      posts: [],
       postTitle: '',
       postBody: '',
       newPostTitle: '',
       newPostBody: '',
       url: 'https://jsonplaceholder.typicode.com/posts/',
-      perPage: 4,
-      currentPage: 1,
-      totalPosts: 100,
-      pageRange: 2,
-      idStart: 0,
-      idEnd: 5,
     }
   },
   created() {
-    this.getAllPosts(this.currentPage);
+    this.getAllPostsX(this.$store.state.currentPageX);
   },
   
-  computed: {
-    searchResults() {
-      return this.$store.results
-    }
-  },
-
   methods: {
-    getSearchingPosts(idPost) {
-      var options = {
-        params: {
-          id: idPost,
-        }
-      }
-      axios.get(this.url, options)
-        .then(response => {
-          this.posts = response.data
-          this.currentPage = page
-        })
-        .catch(error => {
-          console.log('-----error-------');
-          console.log(error);
-        })
+    getAllPostsX (page) {
+      this.$store.dispatch('getAllPosts', page)
     },
-    getAllPosts(page) {
-        this.idEnd = page*4;
-        this.idStart = this.idEnd-4;
-      var options = {
-        params: {
-          _start: this.idStart,
-          _end: this.idEnd,
-        }
-      }
-      axios.get(this.url, options)
-        .then(response => {
-          this.posts = response.data
-          this.currentPage = page
-        })
-        .catch(error => {
-          console.log('-----error-------');
-          console.log(error);
-        })
-    },
+
     newPost() {
       axios.post('http://jsonplaceholder.typicode.com/posts/', {
             title: this.postTitle,
@@ -135,11 +86,20 @@ export default {
     editPost(id, title, body) {
           axios.put('http://jsonplaceholder.typicode.com/posts/' + id, { title: title,  body: body, } )
           .then((response) => {})
-          /* .catch(function(error) {
-            console.log(error)
-          }) */
+          .catch(error => {
+          console.log('-----error-------');
+          console.log(error);
+          })
     },
-  }
+  },
+  computed: {
+    posts() {
+      return this.$store.state.results
+    },
+    /* curr() {
+      return this.$store.state.currentPageX
+    } */
+  },
 }
 </script>
 

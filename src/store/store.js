@@ -7,7 +7,8 @@ Vue.use(Vuex)
 // const url = 'https://jsonplaceholder.typicode.com/posts/'
 const store = new Vuex.Store ({
     state: {
-        results: []
+        results: [],
+        currentPageX: 1,
     },
     mutations: {
         set(state, { type, items }) {
@@ -15,20 +16,40 @@ const store = new Vuex.Store ({
         }
     },
     actions: {
-        search( { commit }, search) {
+        searching ( { commit }, searchId) {
             var options = {
                 params: {
-                  id: search,
+                  id: searchId,
                 }
             }
             const url = 'https://jsonplaceholder.typicode.com/posts/'
-                    axios.get(url, options)
+                axios.get(url, options)
                 .then(response => {
                 const results = response.data
-                // state.results = results
-                    commit('set', { type: 'results', items: results})
+                commit('set', { type: 'results', items: results})
                 })
-        }
+        },
+
+        getAllPosts( { commit }, page ) {
+            this.state.currentPageX = page
+            var options = {
+                params: {
+                _start: (page*4)-4,
+                _end: page*4,
+                }
+            }
+          const url = 'https://jsonplaceholder.typicode.com/posts/'
+          axios.get(url, options)
+            .then(response => {
+              const results = response.data
+              
+              commit('set', { type: 'results', items: results})
+            })
+            .catch(error => {
+              console.log('-----error-------');
+              console.log(error);
+            })
+        },
 
     },
 })

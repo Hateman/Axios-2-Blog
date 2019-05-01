@@ -1,7 +1,7 @@
 <template>
     <div style="margin: 100px">
             <input type="text" v-model="search" placeholder="search by ID" size="10" style="height:30px; font-size: 20px;">
-            <button class="search-button" @click="search(search)">
+            <button class="search-button" @click="searching(search)">
                 GO
             </button>
         
@@ -17,8 +17,8 @@ export default {
     }
   },
   methods: {
-    search (title) {
-      this.$store.dispatch('search', title)
+    searching (search) {
+      this.$store.dispatch('search', search)
     }
   },
 }

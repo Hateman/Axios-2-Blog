@@ -1,24 +1,25 @@
 <template>
 <div>
-<!--   <app-header
-    @post-title="getSearchingPosts">
-  </app-header> -->
-  <app-search></app-search>
+  <app-header></app-header>
+  <!-- <app-search></app-search> -->
+  <!-- <app-results></app-results> -->
   <router-view></router-view>
   
 </div>
 </template>
 
 <script>
-// import Content from './Content.vue';
-// import Header from './Header.vue';
+import Content from './Content.vue';
+import Header from './Header.vue';
 import Search from './Search.vue';
+import Results from './Results.vue';
 
 export default {
   components: {
-    // 'app-content': Content,
-    // 'app-header': Header,
+    'app-content': Content,
+    'app-header': Header,
     'app-search': Search,
+    'app-results': Results,
   },
 }
 

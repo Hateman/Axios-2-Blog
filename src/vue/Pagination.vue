@@ -1,27 +1,27 @@
 <template>
     <div class="pagination">
       <div class="pagination_left">
-        <a href="#" v-if="hasPrev()" @click="changePage(prevPage)">Previous</a>
+        <a href="#" v-if="hasPrev()" @click="changePageX(prevPage)">Previous</a>
       </div>
       <div class="pagination_mid">
         <ul>
-          <li v-if="hasFirst()"><a href="#" @click="changePage(1)">1</a></li>
+          <li v-if="hasFirst()"><a href="#" @click="changePageX(1)">1</a></li>
           <li v-if="hasFirst()"> 
-            <span class="jump" style="color:#eee"><<</span> 
+            <span class="jump" style="color:#eee; font-size:25px">&lArr;</span> 
           </li>
           <li v-for="page in pages" v-bind:key='page'>
-            <a href="#" @click="changePage(page)" :class="{ current: current == page }">
+            <a href="#" @click="changePageX(page)" :class="{ current: current == page }">
               {{ page }}
             </a>
           </li>
           <li v-if="hasLast()"> 
-              <span class="jump" style="color:#eee">>></span>  
+              <span class="jump" style="color:#eee; font-size:25px">&rArr;</span>  
           </li>
-          <li v-if="hasLast()"><a href="#" @click="changePage(totalPages)">{{ totalPages }}</a></li>
+          <li v-if="hasLast()"><a href="#" @click="changePageX(totalPages)">{{ totalPages }}</a></li>
         </ul>
       </div>
       <div class="pagination_right">
-        <a href="#" v-if="hasNext()" @click="changePage(nextPage)">Next</a>
+        <a href="#" v-if="hasNext()" @click="changePageX(nextPage)">Next</a>
       </div>
     </div>
  </template>  
@@ -29,23 +29,19 @@
 <script>
 export default {
     props: {
-    current: {
-      type: Number,
-      default: 1
-    },
-    total: {
-      type: Number,
-      default: 100,
-    },
-    perPage: {
-      type: Number,
-      default: 4,
-    },
-    pageRange: {
-      type: Number,
-      default: 2,
-    },
+    
   },
+    data() {
+      return {
+      current: this.$store.state.currentPageX,  
+      perPage: 4,
+      total: 100,
+      pageRange: 2,
+      }
+    },
+    
+    
+  
   computed: {
     pages: function () {
       var pages = []
@@ -85,12 +81,15 @@ export default {
     hasNext: function () {
       return this.current < this.totalPages
     },
-    changePage: function(page) {
-      this.$emit('page-changed', page)
-    }
+    /* changePage: function(page) {
+      this.$emit('page-changed', page) */
+    
+//  ================================================================================================================== 
+    changePageX (page) {
+      this.$store.dispatch('getAllPosts', page)
+    },
   },
 }
-    
 </script>
 
 <style src="../CSS.css"></style>
