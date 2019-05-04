@@ -5,6 +5,7 @@ import App from './vue/App.vue'
 import Content from './vue/Content.vue'
 import Detailed from './vue/Detailed.vue'
 import Latest from './vue/Latest.vue'
+import store from './store/store.js';
 
 
 // var Vue = require ('vue')
@@ -27,8 +28,9 @@ var router = new VueRouter ({
 
  new Vue({
  el: '#app',
- router: router,
- render: h => h(App)
+ render: h => h(App),
+ router,
+ store,
  });
 
  

@@ -1,8 +1,6 @@
 <template>
     <div>
-        <app-header
-        >
-        </app-header>
+        <!-- <app-header></app-header> -->
     <div class="my-flex-container">
   <!-- ================================================================================================================================== -->
   <div class="flex-block">
