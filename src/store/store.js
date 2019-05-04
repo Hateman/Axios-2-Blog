@@ -8,11 +8,18 @@ Vue.use(Vuex)
 const store = new Vuex.Store ({
     state: {
         results: [],
-        currentPageX: 1,
+        currentPageX: '',
+    },
+    getters: {
+        getResults: state => state.results,
+        getCurrent: state => state.currentPageX
     },
     mutations: {
-        set(state, { type, items }) {
+        setResults(state, { type, items }) {
             state[type] = items
+        },
+        setCurrent(state, page) {
+            state.currentPageX = page
         }
     },
     actions: {
@@ -26,12 +33,11 @@ const store = new Vuex.Store ({
                 axios.get(url, options)
                 .then(response => {
                 const results = response.data
-                commit('set', { type: 'results', items: results})
+                commit('setResults', { type: 'results', items: results})
                 })
         },
 
         getAllPosts( { commit }, page ) {
-            this.state.currentPageX = page
             var options = {
                 params: {
                 _start: (page*4)-4,
@@ -43,11 +49,8 @@ const store = new Vuex.Store ({
             .then(response => {
               const results = response.data
               
-              commit('set', { type: 'results', items: results})
-            })
-            .catch(error => {
-              console.log('-----error-------');
-              console.log(error);
+              commit('setResults', { type: 'results', items: results})
+              commit('setCurrent', page )
             })
         },
 

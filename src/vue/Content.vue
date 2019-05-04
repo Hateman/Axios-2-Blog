@@ -1,9 +1,7 @@
 <template>
   <div >
 
-    <!-- <app-header
-    @post-title="getSearchingPosts">
-    </app-header> -->
+    <!-- <app-header></app-header> -->
 
   <!-- <app-pagination 
   :current="currentPage" 
@@ -65,7 +63,7 @@ export default {
     }
   },
   created() {
-    this.getAllPostsX(this.$store.state.currentPageX);
+    this.getAllPostsX(1);
   },
   
   methods: {
@@ -94,7 +92,8 @@ export default {
   },
   computed: {
     posts() {
-      return this.$store.state.results
+      // return this.$store.state.results
+      return this.$store.getters.getResults
     },
     /* curr() {
       return this.$store.state.currentPageX

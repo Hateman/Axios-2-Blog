@@ -33,7 +33,6 @@ export default {
   },
     data() {
       return {
-      current: this.$store.state.currentPageX,  
       perPage: 4,
       total: 100,
       pageRange: 2,
@@ -66,6 +65,9 @@ export default {
     },
     prevPage: function() {
       return this.current - 1
+    },
+    current: function() {
+      return this.$store.getters.getCurrent
     }
   },
   methods: {

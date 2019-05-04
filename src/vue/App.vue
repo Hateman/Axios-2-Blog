@@ -1,8 +1,6 @@
 <template>
 <div>
   <app-header></app-header>
-  <!-- <app-search></app-search> -->
-  <!-- <app-results></app-results> -->
   <router-view></router-view>
   
 </div>
