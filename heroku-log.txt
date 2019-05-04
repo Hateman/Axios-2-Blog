@@ -1,0 +1,101 @@
+D:\JS\vue-blog-3 ( vuex )>heroku logs --tail --app vue-blog-1
+2019-04-29T20:06:41.162953+00:00 heroku[web.1]: State changed from crashed to starting
+2019-04-29T20:06:43.475039+00:00 heroku[web.1]: Starting process with command `npm start`
+2019-04-29T20:06:47.635769+00:00 heroku[web.1]: State changed from starting to crashed
+2019-04-29T20:06:47.613444+00:00 heroku[web.1]: Process exited with status 1
+2019-04-29T20:06:47.398303+00:00 app[web.1]: npm ERR! missing script: start
+2019-04-29T20:06:47.549421+00:00 app[web.1]:
+2019-04-29T20:06:47.549933+00:00 app[web.1]: npm ERR! A complete log of this run can be found in:
+2019-04-29T20:06:47.550130+00:00 app[web.1]: npm ERR!     /app/.npm/_logs/2019-04-29T20_06_47_400Z-debug.log
+2019-04-30T01:59:04.293243+00:00 heroku[web.1]: State changed from crashed to starting
+2019-04-30T01:59:06.338371+00:00 heroku[web.1]: Starting process with command `npm start`
+2019-04-30T01:59:08.176847+00:00 heroku[web.1]: State changed from starting to crashed
+2019-04-30T01:59:08.158348+00:00 heroku[web.1]: Process exited with status 1
+2019-04-30T01:59:08.104248+00:00 app[web.1]: npm ERR! missing script: start
+2019-04-30T01:59:08.112705+00:00 app[web.1]:
+2019-04-30T01:59:08.113050+00:00 app[web.1]: npm ERR! A complete log of this run can be found in:
+2019-04-30T01:59:08.113186+00:00 app[web.1]: npm ERR!     /app/.npm/_logs/2019-04-30T01_59_08_106Z-debug.log
+2019-04-30T07:27:32.636488+00:00 heroku[web.1]: State changed from crashed to starting
+2019-04-30T07:27:34.549080+00:00 heroku[web.1]: Starting process with command `npm start`
+2019-04-30T07:27:36.730355+00:00 heroku[web.1]: State changed from starting to crashed
+2019-04-30T07:27:36.711401+00:00 heroku[web.1]: Process exited with status 1
+2019-04-30T07:27:36.647715+00:00 app[web.1]: npm ERR! missing script: start
+2019-04-30T07:27:36.654509+00:00 app[web.1]:
+2019-04-30T07:27:36.654754+00:00 app[web.1]: npm ERR! A complete log of this run can be found in:
+2019-04-30T07:27:36.654837+00:00 app[web.1]: npm ERR!     /app/.npm/_logs/2019-04-30T07_27_36_648Z-debug.log
+2019-04-30T13:11:59.950053+00:00 heroku[web.1]: State changed from crashed to starting
+2019-04-30T13:12:01.869783+00:00 heroku[web.1]: Starting process with command `npm start`
+2019-04-30T13:12:03.738820+00:00 heroku[web.1]: State changed from starting to crashed
+2019-04-30T13:12:03.716158+00:00 heroku[web.1]: Process exited with status 1
+2019-04-30T13:12:03.658272+00:00 app[web.1]: npm ERR! missing script: start
+2019-04-30T13:12:03.665242+00:00 app[web.1]:
+2019-04-30T13:12:03.665483+00:00 app[web.1]: npm ERR! A complete log of this run can be found in:
+2019-04-30T13:12:03.665565+00:00 app[web.1]: npm ERR!     /app/.npm/_logs/2019-04-30T13_12_03_659Z-debug.log
+2019-04-30T18:49:06.461329+00:00 heroku[web.1]: State changed from crashed to starting
+2019-04-30T18:49:08.436839+00:00 heroku[web.1]: Starting process with command `npm start`
+2019-04-30T18:49:10.539282+00:00 heroku[web.1]: State changed from starting to crashed
+2019-04-30T18:49:10.521407+00:00 heroku[web.1]: Process exited with status 1
+2019-04-30T18:49:10.453312+00:00 app[web.1]: npm ERR! missing script: start
+2019-04-30T18:49:10.460494+00:00 app[web.1]:
+2019-04-30T18:49:10.460768+00:00 app[web.1]: npm ERR! A complete log of this run can be found in:
+2019-04-30T18:49:10.460853+00:00 app[web.1]: npm ERR!     /app/.npm/_logs/2019-04-30T18_49_10_455Z-debug.log
+2019-05-01T00:49:26.680431+00:00 heroku[web.1]: State changed from crashed to starting
+2019-05-01T00:49:28.769675+00:00 heroku[web.1]: Starting process with command `npm start`
+2019-05-01T00:49:30.999825+00:00 heroku[web.1]: State changed from starting to crashed
+2019-05-01T00:49:30.977552+00:00 heroku[web.1]: Process exited with status 1
+2019-05-01T00:49:30.903858+00:00 app[web.1]: npm ERR! missing script: start
+2019-05-01T00:49:30.911030+00:00 app[web.1]:
+2019-05-01T00:49:30.911344+00:00 app[web.1]: npm ERR! A complete log of this run can be found in:
+2019-05-01T00:49:30.911468+00:00 app[web.1]: npm ERR!     /app/.npm/_logs/2019-05-01T00_49_30_905Z-debug.log
+2019-05-01T06:26:03.455552+00:00 heroku[web.1]: State changed from crashed to starting
+2019-05-01T06:26:05.684048+00:00 heroku[web.1]: Starting process with command `npm start`
+2019-05-01T06:26:08.219868+00:00 heroku[web.1]: State changed from starting to crashed
+2019-05-01T06:26:08.205267+00:00 heroku[web.1]: Process exited with status 1
+2019-05-01T06:26:08.133953+00:00 app[web.1]: npm ERR! missing script: start
+2019-05-01T06:26:08.140601+00:00 app[web.1]:
+2019-05-01T06:26:08.141043+00:00 app[web.1]: npm ERR! A complete log of this run can be found in:
+2019-05-01T06:26:08.141209+00:00 app[web.1]: npm ERR!     /app/.npm/_logs/2019-05-01T06_26_08_135Z-debug.log
+2019-05-01T12:03:19.844438+00:00 heroku[web.1]: State changed from crashed to starting
+2019-05-01T12:03:22.046670+00:00 heroku[web.1]: Starting process with command `npm start`
+2019-05-01T12:03:24.220062+00:00 heroku[web.1]: State changed from starting to crashed
+2019-05-01T12:03:24.194380+00:00 heroku[web.1]: Process exited with status 1
+2019-05-01T12:03:24.132789+00:00 app[web.1]: npm ERR! missing script: start
+2019-05-01T12:03:24.138795+00:00 app[web.1]:
+2019-05-01T12:03:24.139079+00:00 app[web.1]: npm ERR! A complete log of this run can be found in:
+2019-05-01T12:03:24.139153+00:00 app[web.1]: npm ERR!     /app/.npm/_logs/2019-05-01T12_03_24_134Z-debug.log
+2019-05-01T17:39:45.327176+00:00 heroku[web.1]: State changed from crashed to starting
+2019-05-01T17:39:47.212872+00:00 heroku[web.1]: Starting process with command `npm start`
+2019-05-01T17:39:49.104497+00:00 heroku[web.1]: State changed from starting to crashed
+2019-05-01T17:39:49.079663+00:00 heroku[web.1]: Process exited with status 1
+2019-05-01T17:39:49.019937+00:00 app[web.1]: npm ERR! missing script: start
+2019-05-01T17:39:49.025987+00:00 app[web.1]:
+2019-05-01T17:39:49.026237+00:00 app[web.1]: npm ERR! A complete log of this run can be found in:
+2019-05-01T17:39:49.026319+00:00 app[web.1]: npm ERR!     /app/.npm/_logs/2019-05-01T17_39_49_021Z-debug.log
+2019-05-04T19:32:18.000000+00:00 app[api]: Build started by user a7lexx7@gmail.com
+2019-05-04T19:32:50.000000+00:00 app[api]: Build failed -- check your build output: https://dashboard.heroku.com/apps/8981e95d-a901-41b2-b25f-1d7b95fe6378/activity/builds/8eab1775-d02e-4f78-b7a4-3212cfc03470
+2019-05-04T19:35:39.000000+00:00 app[api]: Build started by user a7lexx7@gmail.com
+2019-05-04T19:36:13.000000+00:00 app[api]: Build failed -- check your build output: https://dashboard.heroku.com/apps/8981e95d-a901-41b2-b25f-1d7b95fe6378/activity/builds/41aa3b5f-4128-4e45-b74d-4e5684446b54
+2019-05-04T20:18:58.000000+00:00 app[api]: Build started by user a7lexx7@gmail.com
+2019-05-04T20:19:58.787107+00:00 app[api]: Deploy 049bc83b by user a7lexx7@gmail.com
+2019-05-04T20:19:58.787107+00:00 app[api]: Release v6 created by user a7lexx7@gmail.com
+2019-05-04T20:19:59.937996+00:00 heroku[web.1]: State changed from crashed to starting
+2019-05-04T20:20:02.156351+00:00 heroku[web.1]: Starting process with command `npm start`
+2019-05-04T20:20:03.954238+00:00 heroku[web.1]: State changed from starting to crashed
+2019-05-04T20:20:04.027497+00:00 heroku[web.1]: State changed from crashed to starting
+2019-05-04T20:20:03.939344+00:00 heroku[web.1]: Process exited with status 1
+2019-05-04T20:20:03.887466+00:00 app[web.1]: npm ERR! missing script: start
+2019-05-04T20:20:03.893907+00:00 app[web.1]:
+2019-05-04T20:20:03.894210+00:00 app[web.1]: npm ERR! A complete log of this run can be found in:
+2019-05-04T20:20:03.894348+00:00 app[web.1]: npm ERR!     /app/.npm/_logs/2019-05-04T20_20_03_888Z-debug.log
+2019-05-04T20:20:04.000000+00:00 app[api]: Build succeeded
+2019-05-04T20:20:05.997322+00:00 heroku[web.1]: Starting process with command `npm start`
+2019-05-04T20:20:09.316219+00:00 heroku[web.1]: State changed from starting to crashed
+2019-05-04T20:20:09.224018+00:00 app[web.1]: npm ERR! missing script: start
+2019-05-04T20:20:09.231813+00:00 app[web.1]:
+2019-05-04T20:20:09.232215+00:00 app[web.1]: npm ERR! A complete log of this run can be found in:
+2019-05-04T20:20:09.232389+00:00 app[web.1]: npm ERR!     /app/.npm/_logs/2019-05-04T20_20_09_225Z-debug.log
+2019-05-04T20:20:09.299640+00:00 heroku[web.1]: Process exited with status 1
+2019-05-04T20:20:59.434374+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/" host=vue-blog-1.herokuapp.com request_id=4e3a0985-5562-4fe0-8cba-2ff44da9df48 fwd="188.239.224.245" dyno= connect= service= status=503 bytes= protocol=https
+2019-05-04T20:21:00.279625+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/favicon.ico" host=vue-blog-1.herokuapp.com request_id=c9c27afd-f81f-4c13-867a-1160ddd47857 fwd="188.239.224.245" dyno= connect= service= status=503 bytes= protocol=https
+2019-05-04T20:26:53.086733+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/" host=vue-blog-1.herokuapp.com request_id=a4e11614-a3a7-44b9-af50-1bc1a90194f5 fwd="188.239.224.245" dyno= connect= service= status=503 bytes= protocol=https
+2019-05-04T20:26:54.070655+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/favicon.ico" host=vue-blog-1.herokuapp.com request_id=2626402a-dd12-476d-bba1-ff36d049a1c1 fwd="188.239.224.245" dyno= connect= service= status=503 bytes= protocol=https
