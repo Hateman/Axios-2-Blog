@@ -27,6 +27,7 @@
     <router-link :to="{ name: 'detailed', params: { id: post.id -1 } }">
     <img src="../img/post.jpg"/>
     </router-link>
+    <!-- inline стили - это плохо =) -->
     <h4><span style="color:#98FB98">Post #</span> {{ post.id }}</h4>
     <h3><span style="color:#98FB98">Title:</span> {{ post.title }}</h3>
     <p><span style="color:#98FB98">Body:</span> <br>{{ post.body}}</p>
@@ -45,6 +46,7 @@
 </template>
 
 <script>
+// закоментированые части кода желательно удалять перед пушем
 import axios from 'axios';
 import Pagination from './Pagination.vue';
 import Header from './Header.vue';
@@ -59,6 +61,9 @@ export default {
       postBody: '',
       newPostTitle: '',
       newPostBody: '',
+      // такие строки нужно выносить в конфиг только 'https://jsonplaceholder.typicode.com/'
+      // https://jsonplaceholder.typicode.com/ - как бы константа
+      // что бы ты юзать например hostname + 'posts/'
       url: 'https://jsonplaceholder.typicode.com/posts/',
     }
   },
@@ -80,10 +85,13 @@ export default {
     deletePost(index) {
       axios.delete('http://jsonplaceholder.typicode.com/posts/' + index)
       .then((response) => {this.posts.splice(index,1)})
+      // если не используешь обьект response то можно в скобочках не передавать переменную
+      // оставлять просто .then(() => {})
+      // также с колбеком catch
     },
     editPost(id, title, body) {
           axios.put('http://jsonplaceholder.typicode.com/posts/' + id, { title: title,  body: body, } )
-          .then((response) => {})
+          .then((response) => {}) // можно не обрабатывать колбек then если он тебе не нужен
           .catch(error => {
           console.log('-----error-------');
           console.log(error);
