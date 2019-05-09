@@ -1,0 +1,183 @@
+<template>
+  <div class="app">
+    <div class="header">
+      <input type="text" v-model="search" class="header_input_search" placeholder="Search" />
+      <img src="src/assets/milk.png">
+      <div class="header_div_inputs">
+        <input type="text" v-model="createTitle" class="created"/>
+        <p><input type="text" v-model="createBody" class="createBody"/></p>
+      </div>
+      <button  @click="addPost()" class="addPost">AddPost</button>
+    </div>
+    <ul>
+      <li v-for="(post, index) in paginatedData" class="post" :key="index">
+        <router-link :to="{ name: 'detail', params: {id: post.id, title: post.title, body: post.body} }">
+          <img src="src/assets/nature.jpg">
+          <p class="boldText"> {{ post.title }}</p>
+        </router-link>
+        <p> {{ post.body }}</p>
+        <!-- <button  @click="deleteData(index, post.id)" class="buttonDelete">Delete</button>
+        <button @click="visiblePostID = post.id" class="buttonChange">Change</button>
+        <div v-if="visiblePostID === post.id" class="modalWindow">
+        <div><input  v-model="post.title" class="changePost"><input  v-model="post.body" class="changePost"></div>
+        <button type="button" @click="changePost(post.id, post.title, post.body)" class="apply">To apply</button>
+      </div> -->
+
+    </li>
+
+  </ul>
+  <div class="allpagination">
+    <button type="button" @click="page -=1" v-if="page > 0" class="prev"><<</button>
+    <div class="pagin">
+      <button class="item"
+      v-for="n in evenPosts"
+      :key="n.id"
+      v-bind:class="{'selected': current === n.id}"
+      @click="page=n-1">{{ n }} </button>
+    </div>
+    <button type="button" @click="page +=1" class="next" v-if="page < evenPosts-1">>></button>
+  </div>
+
+</div>
+</template>
+
+<script>
+  import axios from 'axios';
+  export default {
+    name: 'Pagination',
+    data () {
+      return {
+        search: '',
+        current: null,
+        page: 0,
+        posts: [],
+        createTitle: '',
+        createBody: '',
+        visiblePostID: '',
+      }
+    },
+    watch: {
+      counter: function(newValue, oldValue) {
+        this.getData()
+      }
+    },
+    created(){
+      this.getData()
+    },
+    computed: {
+      evenPosts: function(posts){
+        return Math.ceil(this.posts.length/6);
+      },
+      paginatedData() {
+        const start = this.page * 6;
+        const end = start + 6;
+        return this.posts.filter((post) => {
+          return post.title.match(this.search);
+        }).slice(start, end);
+      },
+    },
+    methods: {
+      // setCurrent: function(id) {
+      //   this.current = id;
+      // },
+      getData() {
+        axios.get(`https://jsonplaceholder.typicode.com/posts`).then(response => {
+          this.posts = response.data
+        })
+      },
+      // deleteData(index, id) {
+      //   axios.delete('http://jsonplaceholder.typicode.com/posts/' + id)
+      //   .then(response => {
+      //     console.log('delete')
+      //     this.posts.splice(index, 1);
+      //   })
+      //   .catch(function(error) {
+      //     console.log(error)
+      //   })
+      // },
+      addPost() {
+        axios.post('http://jsonplaceholder.typicode.com/posts/', {
+          title: this.createTitle,
+          body: this.createBody
+        }).then((response) => {
+          this.posts.unshift(response.data)
+        })
+      },
+      // changePost(id, title, body) {
+      //   axios.put('http://jsonplaceholder.typicode.com/posts/' + id, {
+      //     title: title,
+      //     body: body
+      //   })
+      // },
+    }
+  }
+</script>
+=======================================================================================================================================
+Detail.vue
+
+<template>
+  <div class="post">
+    <img src="/src/assets/nature.jpg" class="post_img_nature" >
+    <h2>{{ id }}</h2>
+    <h2>{{ title }}</h2>
+    <p>{{ body }}</p>
+    <button  @click="deleteData(id)" class="buttonDelete">Delete</button>
+    <button @click="visiblePostID = id" class="buttonChange">Change</button>
+    <div v-if="visiblePostID === id" class="modalWindow">
+    <div><input  v-model="title" class="changePost"><input  v-model="body" class="changePost"></div>
+    <button type="button" @click="changePost(id, title, body)" class="apply">To apply</button>
+  </div>
+  </div>
+</template>
+
+<script>
+  import axios from 'axios';
+  export default {
+    props: {
+      id: Number,
+      title: String,
+      body: String,
+    },
+    data: function() {
+      return {
+        current: null,
+        posts: [],
+        createTitle: '',
+        createBody: '',
+        visiblePostID: '',
+      }
+    },
+    created: function() {
+      var postId = this.$route.params.id
+      this.post = this.posts[this.$route.params.id]
+      this.post = this.posts[this.$route.params.title]
+      this.post = this.posts[this.$route.params.body]
+    },
+    methods: {
+      // setCurrent: function(id) {
+      //   this.current = id;
+      // },
+      getData() {
+        axios.get(`https://jsonplaceholder.typicode.com/posts`).then(response => {
+          this.posts = response.data
+        })
+      },
+      deleteData(id) {
+        axios.delete('http://jsonplaceholder.typicode.com/posts/' + id)
+        .then(response => {
+          console.log('delete')
+          // this.posts.splice(id-1, 1);
+        })
+        .catch(function(error) {
+          console.log(error)
+        })
+      },
+      changePost(id, title, body) {
+        axios.put('http://jsonplaceholder.typicode.com/posts/' + id, {
+          title: title,
+          body: body
+        })
+      },
+    }
+}
+</script>
