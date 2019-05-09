@@ -6,14 +6,12 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "start": "vue-cli-service serve"
-  },
-  "engines": {
-    "node": "10.15.3"
+    "start": "node server.js"
   },
   "dependencies": {
     "axios": "^0.18.0",
     "core-js": "^2.6.5",
+    "express": "^4.16.4",
     "vue": "^2.6.10",
     "vue-router": "^3.0.6",
     "vuex": "^3.1.0"
