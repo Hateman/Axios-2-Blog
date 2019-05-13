@@ -1,6 +1,5 @@
 <template>
     <div class="container-header">
-        <!-- <div class="block-header"><a href="/#/">Home</a></div> -->
         <div class="block-header"><a href="#" @click="changePageX(1)">Home</a></div>
         <div class="block-header"><a href="/#/latest">Latest</a></div>
         <router-link :to="{ name: 'detailed', params: { id: 2 } }">
