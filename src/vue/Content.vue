@@ -1,16 +1,6 @@
 <template>
   <div >
 
-    <!-- <app-header></app-header> -->
-
-  <!-- <app-pagination 
-  :current="currentPage" 
-  :total="totalPosts" 
-  :perPage="perPage" 
-  :pageRange="pageRange"  
-  >
-  </app-pagination> -->
-
   <app-pagination></app-pagination>
 
     <header class="grid_item" >
@@ -24,18 +14,31 @@
   <div class="my-flex-container">
 
   <div v-for="post in posts" :key='post.id' class="flex-block">
-    <router-link :to="{ name: 'detailed', params: { id: post.id -1 } }">
-    <img src="../img/post.jpg"/>
+    <router-link :to="{ name: 'detailed' }">
+    <img @click="getPostId(post.id)" src="../img/post.jpg"/>
     </router-link>
     <h4><span style="color:#98FB98">Post #</span> {{ post.id }}</h4>
     <h3><span style="color:#98FB98">Title:</span> {{ post.title }}</h3>
     <p><span style="color:#98FB98">Body:</span> <br>{{ post.body}}</p>
     
     <div class="wrapper">
-          <router-link :to="{ name: 'detailed', params: { id: post.id - 1} }">
-            <button class="btn btn-success">Detailed</button>
+          <router-link :to="{ name: 'detailed' }">
+            <button class="btn btn-success" @click="getPostId(post.id)">Detailed</button>
           </router-link>  
     </div>
+
+    <div class="wrapper">  
+      <div class="content">
+        <ul>    
+          <li><input type="text" v-model="post.title" placeholder="EDIT TITLE" size="30"></li>
+          <li><input type="text" v-model="post.body" placeholder="EDIT POST" size="30"></li><br>
+          <li><button v-on:click="editPost(post.id, post.title, post.body)" class="btn btn-info">Confirm</button>
+          <button v-on:click="deletePost( post.id )" class="btn btn-primary">Delete</button></li>
+        </ul>  
+      </div>
+      <div class="parent">Edit</div>
+    </div>
+
       <hr>
   </div>
   
@@ -47,19 +50,16 @@
 <script>
 import axios from 'axios';
 import Pagination from './Pagination.vue';
-import Header from './Header.vue';
+import {urlApi} from '../store/vars.js';
 export default {
    components: {
     'app-pagination': Pagination,
-    'app-header': Header,
   },
    data () {
     return {
       postTitle: '',
       postBody: '',
       newPostTitle: '',
-      newPostBody: '',
-      url: 'https://jsonplaceholder.typicode.com/posts/',
     }
   },
   created() {
@@ -67,37 +67,35 @@ export default {
   },
   
   methods: {
+
+    getPostId (id) {
+      this.$store.dispatch('getDetailedPost', id)
+    },
+
+    deletePost ( id ) {
+      this.$store.dispatch('deletePost', id)
+    },
+
     getAllPostsX (page) {
       this.$store.dispatch('getAllPosts', page)
     },
 
     newPost() {
-      axios.post('http://jsonplaceholder.typicode.com/posts/', {
+      axios.post(urlApi.url + 'posts/', {
             title: this.postTitle,
-            body: this.postBody
-            }).then((response) => {this.posts.splice(0,0,response.data)} )
-    },
-    deletePost(index) {
-      axios.delete('http://jsonplaceholder.typicode.com/posts/' + index)
-      .then((response) => {this.posts.splice(index,1)})
+            body: this.postBody 
+            })
+            .then((response) => {this.posts.splice(0,0,response.data)} )
     },
     editPost(id, title, body) {
-          axios.put('http://jsonplaceholder.typicode.com/posts/' + id, { title: title,  body: body, } )
-          .then((response) => {})
-          .catch(error => {
-          console.log('-----error-------');
-          console.log(error);
-          })
+          axios.put(urlApi.url + 'posts/' + id, { title: title,  body: body, } )
+          .then(() => {})
     },
   },
   computed: {
     posts() {
-      // return this.$store.state.results
       return this.$store.getters.getResults
     },
-    /* curr() {
-      return this.$store.state.currentPageX
-    } */
   },
 }
 </script>

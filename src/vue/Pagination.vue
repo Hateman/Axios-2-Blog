@@ -29,7 +29,6 @@
 <script>
 export default {
     props: {
-    
   },
     data() {
       return {
@@ -39,8 +38,6 @@ export default {
       }
     },
     
-    
-  
   computed: {
     pages: function () {
       var pages = []
@@ -83,10 +80,6 @@ export default {
     hasNext: function () {
       return this.current < this.totalPages
     },
-    /* changePage: function(page) {
-      this.$emit('page-changed', page) */
-    
-//  ================================================================================================================== 
     changePageX (page) {
       this.$store.dispatch('getAllPosts', page)
     },
