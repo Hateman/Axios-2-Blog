@@ -7,13 +7,19 @@
   <table style="width: 100px; text-align: center; ">
 
   <tr v-for="post in posts" :key='post.id' class="flex-block-latest">
+    
+      <router-link :to="{ name: 'detailed' }">
       <img src="../img/post.jpg" @click="getPostId(post.id)" width="350px" height="218px"/>
+      </router-link>
+
     <h4>Post # {{ post.id }}</h4>
     <h3>{{ post.title }}</h3>
     <p>{{ post.body}}</p>
     
     <div class="wrapper">
-            <button @click="getPostId(post.id)" class="btn btn-success">Detailed</button>
+            <router-link :to="{ name: 'detailed' }">
+            <button class="btn btn-success" @click="getPostId(post.id)">Detailed</button>
+            </router-link>
     </div>
       <hr>
   </tr>

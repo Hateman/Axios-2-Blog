@@ -1,0 +1,23 @@
+        
+        .txt {
+            color: rgb(221, 216, 216);
+            font-size: 34px;
+            /* background-color: rgb(114, 110, 110); */
+        }
+        .hr {
+            border: none; /* Убираем границу для браузера Firefox */
+            color: rgb(15, 185, 52); /* Цвет линии для остальных браузеров */
+            background-color: rgb(20, 128, 44); /* Цвет линии для браузера Firefox и Opera */
+            height: 2px; /* Толщина линии */
+        }
+        .items-hub {
+            background: url(./img/hub.png);
+            color: rgb(15, 185, 52);
+            width: 30px; 
+        }
+        .items-motion {
+            background: url(./img/motion.png);
+        }
+        .items-door {
+            background: url(./img/door.png);
+        }
