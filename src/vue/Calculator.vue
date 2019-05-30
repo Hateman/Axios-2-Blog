@@ -1,29 +1,35 @@
 <template>
     <div>
-        <!-- список оборудования -->
+        
     <table width="100%" class="txt"> 
+            <!-- заголовки -->
             <tr>
+                <td> # </td>
                 <td> Фото </td>
                 <td> Наименование </td>
                 <td> Количество </td>
                 <td> Цена </td>
             </tr> 
+
+            <!-- массив селектов -->
             <tr v-for="(item, index) in items" :key="item.id" class="txt" >
-                <!-- <td> {{ index +1 }} </td> -->
+                <td> {{ index +1 }} </td>
                 <td :class="'items-' + item.type" >  </td>
 
-                <!-- <td> {{ price }} </td> -->
-                <select class="form-control" style="margin:" v-model.number="items[index].type" @change="chSum (index, item.type)">
+                <!-- выбор оборудования -->
+                <select class="form-control" style="margin:" v-model.number="items[index].type" @change="chPrice (index, item.type)">
                     <option :value="key" v-for="(item, key) in itemsTypes" :key="item.id">
                         {{ item.type }}
                     </option>
                 </select>
 
+                <!-- кнопка количества -->
                 <td> <input type="number" class="form-control" min="0" v-model.number="items[index].qty" style="width:100px" >
                 </td>
-
+                <!-- цена -->
                 <td> {{ item.price * item.qty }} </td>
-                
+
+                <!-- кнопка удалить -->
                 <td> <button class="btn btn-danger" @click="deleteItem (index) " >Удалить</button> </td>
             </tr> 
         </table>
@@ -31,6 +37,7 @@
         
         <table width="100%">
         <tr>
+            <!-- добавление оборудования + сумма -->
             <td> <button class="btn btn-success" @click="addNewOne" >Добавить оборудование</button> </td>
             <td> <h1 class="txt">Итого: {{ totalPrice }}</h1> </td>
         </tr>
@@ -44,27 +51,12 @@ export default {
     data () {
         return {
             items: [],
+            // шаблоны позиций оборудования
             itemsTypes: {
-                 newItem: {
-                    price: 0,
-                    type: '',
-                    qty: '',
-                }, 
-                hub: {
-                    price: 3500,
-                    type: 'Hub',
-                    qty: '1',
-                },
-                motion: {
-                    price: 1200,
-                    type: 'Motion protect',
-                    qty: '1',
-                },
-                door: {
-                    price: 900,
-                    type: 'Door protect',
-                    qty: '1',
-                },
+                newItem: { price: 0, type: '', qty: '', }, 
+                hub: { price: 3500, type: 'Hub', qty: '1', },
+                motion: { price: 1200, type: 'Motion protect', qty: '1', },
+                door: { price: 900, type: 'Door protect', qty: '1', },
             },
             defaultItem: 'newItem',
             defaultPrice: '0',
@@ -75,11 +67,12 @@ export default {
     created() {
     
   },
+    // общая сумма всего оборудования
     computed: {
         totalPrice() {
         var sum = 0;
-        this.items.forEach((Item) => {
-            sum += this.itemsTypes[Item.type].price * this.itemsTypes[Item.type].qty;
+        this.items.forEach((item) => {
+            sum += item.price * item.qty;
         });
 
         return sum;
@@ -87,6 +80,7 @@ export default {
     },
 
     methods: {
+        // добваить позицию
         addNewOne () {
             this.items.push ({
                 type: this.defaultItem,
@@ -94,10 +88,12 @@ export default {
                 qty: this.defaultQty,
             });
         },
+        // удалить позицию
         deleteItem (id) {
             this.items.splice (id, 1);
         },
-        chSum (index, item) {
+        // присвоить цену, промежуточное
+        chPrice (index, item) {
             this.items[index].price = this.itemsTypes[item].price 
         },
     },
